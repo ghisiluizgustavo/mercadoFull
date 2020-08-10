@@ -15,9 +15,5 @@
             <dependent-object>Module_1597071759346</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="mercadoWEB.war" deploy-path="/" handle="module:/resource/mercadoWEB/mercadoWEB">
-            <dependent-object>Module_1597071786003</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

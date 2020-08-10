@@ -3,11 +3,11 @@
 	<name>mercadoEAR</name>
 	<comment></comment>
 	<projects>
-		<project>mercadoJPA</project>
 		<project>mercadoEJB</project>
 		<project>mercadoEJBClient</project>
-		<project>mercadoWS</project>
+		<project>mercadoJPA</project>
 		<project>mercadoWEB</project>
+		<project>mercadoWS</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
