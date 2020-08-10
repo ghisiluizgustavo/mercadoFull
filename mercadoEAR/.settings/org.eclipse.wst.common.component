@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="mercadoEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="mercadoJPA.jar" deploy-path="/lib" handle="module:/resource/mercadoJPA/mercadoJPA">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mercadoEJB.jar" deploy-path="/" handle="module:/resource/mercadoEJB/mercadoEJB">
+            <dependent-object>Module_1597065084660</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mercadoEJBClient.jar" deploy-path="/" handle="module:/resource/mercadoEJBClient/mercadoEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mercadoWS.war" deploy-path="/" handle="module:/resource/mercadoWS/mercadoWS">
+            <dependent-object>Module_1597071759346</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mercadoWEB.war" deploy-path="/" handle="module:/resource/mercadoWEB/mercadoWEB">
+            <dependent-object>Module_1597071786003</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
