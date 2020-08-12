@@ -1,12 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Fornecedor</title>
+</h:head>
+<h:body>
+	<h:form>
+		<fieldset>
+		<legend>Cadastro de fornecedores</legend>
+		<h:outputLabel style="background-color: red; color: white" value="#{fornecedorBean.mensagem}" />
+		<br />
+		<h:outputLabel value="Nome" /><br />
+		<h:inputText value="#{fornecedorBean.fornecedor.nome}" required="true" />
+		<br />
+		<h:outputLabel value="CNPJ" /><br />
+		<h:inputText value="#{fornecedorBean.fornecedor.cnpj}" required="true" />
+		<br />
+		<h:outputLabel value="Telefone" /><br />
+		<h:inputText value="#{fornecedorBean.fornecedor.telefone}" required="true" />
+		<br />
+		<br />
+		<h:commandButton action="#{fornecedorBean.add()}"
+			value="Adicionar Fornecedor" />
+		</fieldset>
+	</h:form>
+<!-- 		<br /> -->
+<!-- 		<br /> -->
+<!-- 		<br /> -->
 
-	<body>
-	
-		<h1>FORNECEDOR</h1>
-	
-	</body>
+<!-- 	<h:form id="fFiltrar"> -->
+<!-- 		<fieldset> -->
+<!-- 		<legend>Atualizar e Deletar</legend> -->
+<!-- 		<h:outputLabel value="Liste o cliente pelo codigo para outras operações" /> -->
+<!-- 		<br /> -->
+<!-- 		<br /> -->
+<!-- 		<h:outputLabel value="Codigo" /> -->
+<!-- 		<br /> -->
+<!-- 		<h:inputText value="#{clienteBean.cliente.codigo}" required="true" /> -->
+<!-- 		<br /> -->
+<!-- 		<h:outputLabel value="Nome" /><br /> -->
+<!-- 		<h:inputText value="#{clienteBean.cliente.nome}" /> -->
+<!-- 		<br /> -->
+<!-- 		<h:outputLabel value="CPF" /><br /> -->
+<!-- 		<h:inputText value="#{clienteBean.cliente.cpf}"/> -->
+<!-- 		<br /> -->
+<!-- 		<br /> -->
+<!-- 		<h:commandButton action="#{clienteBean.filtrar()}" -->
+<!-- 			value="Buscar pelo codigo"/> -->
+<!-- 		<br /> -->
+<!-- 		<br /> -->
+<!-- 		<h:commandButton action="#{clienteBean.update()}" -->
+<!-- 			value="Atualizar"  -->
+<!-- 			rendered="#{clienteBean.status}"/> -->
+<!-- 		<br /> -->
+<!-- 		<br /> -->
+<!-- 		<h:commandButton action="#{clienteBean.delete()}" -->
+<!-- 			value="Remover" -->
+<!-- 			rendered="#{clienteBean.status}" /> -->
+<!-- 		</fieldset> -->
+<!-- 	</h:form> -->
+<!-- 	<br /> -->
+
+<!-- 	<table border="1px"> -->
+<!-- 		<thead> -->
+<!-- 			<tr> -->
+<!-- 				<th>Código</th> -->
+<!-- 				<th>Nome</th> -->
+<!-- 				<th>CPF</th> -->
+<!-- 			</tr> -->
+<!-- 		</thead> -->
+<!-- 		<tbody> -->
+<!-- 			<ui:repeat var="cliente" value="#{clienteBean.buscarTodos()}"> -->
+<!-- 				<h:panelGroup> -->
+<!-- 					<tr> -->
+<!-- 						<td>#{cliente.codigo}</td> -->
+<!-- 						<td>#{cliente.nome}</td> -->
+<!-- 						<td>#{cliente.cpf}</td> -->
+<!-- 					</tr> -->
+<!-- 				</h:panelGroup> -->
+<!-- 			</ui:repeat> -->
+<!-- 		</tbody> -->
+<!-- 	</table> -->
+
+</h:body>
 </html>

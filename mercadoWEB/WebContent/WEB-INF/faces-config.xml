@@ -10,5 +10,11 @@
 		<managed-bean-class>br.com.api.mercado.bean.ClienteBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>fornecedorBean</managed-bean-name>
+		<managed-bean-class>br.com.api.mercado.bean.FornecedorBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

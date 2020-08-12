@@ -9,7 +9,6 @@ import javax.ejb.EJB;
 import br.com.api.mercado.dao.IClienteDAO;
 import br.com.api.mercado.model.Cliente;
 
-
 @ManagedBean
 public class ClienteBean {
 	
@@ -61,7 +60,6 @@ public class ClienteBean {
 		} else {
 			this.mensagem = "Cliente cadastrado com sucesso";
 		}
-		
 	}
 	
 	public List<Cliente> buscarTodos(){
@@ -71,12 +69,24 @@ public class ClienteBean {
 	}
 	
 	public void filtrar(){
-		cliente = clienteDAO.filtrar(cliente, cliente.getCodigo());		
+		cliente = clienteDAO.filtrar(cliente, cliente.getCodigo());
+		setStatus(true);
+		setMensagem("");
 	}
-
 	
+	public void update(){
+		cliente = clienteDAO.update(cliente);
+		setCliente(cliente);
+		setStatus(false);
+		this.cliente = new Cliente();
+		setMensagem("");
+	}
 	
-	
-
+	public void delete(){
+		clienteDAO.delete(cliente, cliente.getCodigo());
+		setStatus(false);
+		this.cliente = new Cliente();
+		setMensagem("");
+	}
 
 }

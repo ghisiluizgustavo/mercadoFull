@@ -10,9 +10,9 @@
 </h:head>
 <h:body>
 	<h:form id="fCadastro">
+		<fieldset>
+		<legend>Cadastro de clientes</legend>
 		<h:outputLabel style="background-color: red; color: white" value="#{clienteBean.mensagem}" />
-		<br />
-		<br />
 		<br />
 		<h:outputLabel value="Nome" /><br />
 		<h:inputText value="#{clienteBean.cliente.nome}" required="true" />
@@ -23,22 +23,45 @@
 		<br />
 		<h:commandButton action="#{clienteBean.add()}"
 			value="Adicionar Cliente" />
-		<br />
-		<br />
-		<br />
+		
+		</fieldset>
 	</h:form>
-	
+		<br />
+		<br />
+		<br />
+
 	<h:form id="fFiltrar">
-		<h:outputLabel value="Liste o cliente pelo codigo para outras operações" /><br />
-		<h:inputText value="#{clienteBean.cliente.codigo}" />
+		<fieldset>
+		<legend>Atualizar e Deletar</legend>
+		<h:outputLabel value="Liste o cliente pelo codigo para outras operações" />
+		<br />
+		<br />
+		<h:outputLabel value="Codigo" />
+		<br />
+		<h:inputText value="#{clienteBean.cliente.codigo}" required="true" />
+		<br />
+		<h:outputLabel value="Nome" /><br />
+		<h:inputText value="#{clienteBean.cliente.nome}" />
+		<br />
+		<h:outputLabel value="CPF" /><br />
+		<h:inputText value="#{clienteBean.cliente.cpf}"/>
 		<br />
 		<br />
 		<h:commandButton action="#{clienteBean.filtrar()}"
-			value="Buscar pelo codigo" />
+			value="Buscar pelo codigo"/>
 		<br />
 		<br />
+		<h:commandButton action="#{clienteBean.update()}"
+			value="Atualizar" 
+			rendered="#{clienteBean.status}"/>
 		<br />
+		<br />
+		<h:commandButton action="#{clienteBean.delete()}"
+			value="Remover"
+			rendered="#{clienteBean.status}" />
+		</fieldset>
 	</h:form>
+	<br />
 
 	<table border="1px">
 		<thead>
