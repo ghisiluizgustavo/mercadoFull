@@ -1,5 +1,8 @@
 package br.com.api.mercado.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 
@@ -50,5 +53,24 @@ public class FornecedorBean {
 		} else {
 			setMensagem("Fornecedor cadastrado com sucesso");
 		}	
+	}
+	
+	public List<Fornecedor> buscarTodos(){
+		List<Fornecedor> alFornecedores = new ArrayList<Fornecedor>();
+		alFornecedores = fornecedorDAO.buscarTodos(fornecedor);
+		return alFornecedores;
+	}
+	
+	public void filtrar(){
+		fornecedor = fornecedorDAO.filtrar(fornecedor, fornecedor.getCodigo());
+		setStatus(true);
+		setMensagem("");
+	}
+	
+	public void update(){
+		fornecedor = fornecedorDAO.update(fornecedor);
+		setFornecedor(fornecedor);
+		this.fornecedor = new Fornecedor();
+		setStatus(false);
 	}
 }
