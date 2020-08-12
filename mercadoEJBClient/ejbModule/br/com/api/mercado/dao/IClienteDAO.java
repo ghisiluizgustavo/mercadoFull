@@ -1,9 +1,7 @@
 package br.com.api.mercado.dao;
 
 import java.util.List;
-
 import javax.ejb.Local;
-
 import br.com.api.mercado.model.Cliente;
 
 @Local
