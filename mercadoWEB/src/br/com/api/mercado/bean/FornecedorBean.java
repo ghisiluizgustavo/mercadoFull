@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import br.com.api.mercado.dao.IFornecedorDAO;
@@ -16,61 +17,90 @@ public class FornecedorBean {
 	private IFornecedorDAO fornecedorDAO;
 	private Fornecedor fornecedor;
 	private String mensagem;
-	private boolean status = false;
-	
-	public FornecedorBean(){
+	private List<Fornecedor> alFornecedores = new ArrayList<Fornecedor>();
+
+	@PostConstruct
+	public void FornecedorBean() {
 		fornecedor = new Fornecedor();
+		buscarTodos();
 	}
-	
+
+	public List<Fornecedor> getAlFornecedores() {
+		return alFornecedores;
+	}
+
+	public void setAlFornecedores(List<Fornecedor> alFornecedores) {
+		this.alFornecedores = alFornecedores;
+	}
+
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
+
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
+
 	public String getMensagem() {
 		return mensagem;
 	}
+
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
 	}
-	public boolean getStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	} 
-	
-//	Operações com o BANCO (DAO)
-	
-	public void add(){
-		this.mensagem = null;
-		fornecedor.setCodigo(null);
-		
+
+	// Operações com o BANCO (DAO)
+
+	public void add() {
+		setMensagem(null);
+
+		if (fornecedor.getCodigo() != null) {
+			setMensagem("Codigo preenchido, não é possivel cadastrar!");
+			return;
+		}
+
 		Fornecedor fornRetorno = fornecedorDAO.add(fornecedor);
-		if(fornRetorno == null){
+		if (fornRetorno == null) {
 			setMensagem("Erro ao cadastrar fornecedor");
 		} else {
 			setMensagem("Fornecedor cadastrado com sucesso");
-		}	
+			buscarTodos();
+		}
 	}
-	
-	public List<Fornecedor> buscarTodos(){
-		List<Fornecedor> alFornecedores = new ArrayList<Fornecedor>();
-		alFornecedores = fornecedorDAO.buscarTodos(fornecedor);
-		return alFornecedores;
+
+	public void selecionar(Fornecedor fornecedorSel) {
+		setFornecedor(fornecedorSel);
 	}
-	
-	public void filtrar(){
+
+	public void buscarTodos() {
+		setAlFornecedores(fornecedorDAO.buscarTodos(fornecedor));
+	}
+
+	public void filtrar() {
+		if (fornecedor.getCodigo() == null) {
+			setMensagem("Informe o valor do codigo para filtrar");
+			return;
+		}
 		fornecedor = fornecedorDAO.filtrar(fornecedor, fornecedor.getCodigo());
-		setStatus(true);
-		setMensagem("");
+		setMensagem(null);
 	}
-	
-	public void update(){
+
+	public void update() {
+		if (fornecedor.getCodigo() == null) {
+			setMensagem("Código não preenchido, favor informar para a atualizar!");
+			return;
+		}
 		fornecedor = fornecedorDAO.update(fornecedor);
 		setFornecedor(fornecedor);
 		this.fornecedor = new Fornecedor();
-		setStatus(false);
+		setMensagem(null);
 	}
+
+	public void delete() {
+		fornecedorDAO.delete(fornecedor, fornecedor.getCodigo());
+		this.fornecedor = new Fornecedor();
+		setMensagem("Fornecedor Deletado!");
+		buscarTodos();
+	}
+
 }

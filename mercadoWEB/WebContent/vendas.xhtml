@@ -1,10 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-
-	<body>
-		<h1>VENDAS</h1>
-	</body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Vendas</title>
+</h:head>
+<h:body>
+	<h:form>			
+		<fieldset>
+		<legend>Cadastro de Vendas</legend>
+		<h:outputLabel style="background-color: red; color: white" value="#{vendaBean.mensagem}" />
+		<br /> 
+		<br />
+		<h:outputLabel value="Codigo" /> <br />
+		<h:inputText value="#{vendaBean.vendas.codigo}"/>
+		<br />
+		<h:outputLabel value="Data (Ano-Mes-Dia)" /><br />
+		<h:inputText value="#{vendaBean.vendas.data}" />
+		<br />
+		<h:outputLabel value="Valor" /><br />
+		<h:inputText value="#{vendaBean.vendas.valor}"/>
+		<br />
+		<h:outputLabel value="Codigo Cliente" /><br />
+		<h:inputText value="#{vendaBean.vendas.codigoCliente}"/>
+		<br />
+		<br />
+		<h:commandButton action="#{vendaBean.add()}" value="Adicionar Vendas" />
+		<br />
+		<br />
+		<h:commandButton action="#{vendaBean.filtrar()}" value="Buscar pelo codigo" />
+		<br />
+		<br />
+		<h:commandButton action="#{vendaBean.update()}" value="Atualizar" />
+		<br />
+		<br />
+		<h:commandButton action="#{vendaBean.delete()}" value="Remover" />
+		<br />
+		</fieldset>
+	
+	<br />
+	
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Data</th>
+				<th>Valor</th>
+				<th>Código do Cliente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<ui:repeat var="venda" value="#{vendaBean.alVendas}">
+				<h:panelGroup>
+					<tr>
+						<td>#{venda.codigo}</td>
+						<td>#{venda.data}</td>
+						<td>#{venda.valor}</td>
+						<td>#{venda.codigoCliente}</td>
+						<td>
+							<h:commandButton action="#{vendaBean.selecionar(venda)}" value="Selecionar" />
+						</td>
+					</tr>
+				</h:panelGroup>
+			</ui:repeat>
+		</tbody>
+	</table>
+	</h:form>
+	
+</h:body>
 </html>

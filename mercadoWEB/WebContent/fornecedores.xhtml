@@ -9,42 +9,17 @@
 	<title>Fornecedor</title>
 </h:head>
 <h:body>
-	<h:form id="fCadastro">
+	<h:form>			
+			
+		<br />
+		<br />
 		<fieldset>
-			<legend>Cadastro de fornecedores</legend>
-			<h:outputLabel style="background-color: red; color: white"
-				value="#{fornecedorBean.mensagem}" />
-			<br />
-			<h:outputLabel value="Nome" />
-			<br />
-			<h:inputText value="#{fornecedorBean.fornecedor.nome}"
-				required="true" />
-			<br />
-			<h:outputLabel value="CNPJ" />
-			<br />
-			<h:inputText value="#{fornecedorBean.fornecedor.cnpj}"
-				required="true" />
-			<br />
-			<h:outputLabel value="Telefone" />
-			<br />
-			<h:inputText value="#{fornecedorBean.fornecedor.telefone}"
-				required="true" />
-			<br /> <br />
-			<h:commandButton action="#{fornecedorBean.add()}"
-				value="Adicionar Fornecedor" />
-		</fieldset>
-	</h:form>
-	<br />
-	<br />
-	<h:form id="fFiltrar">
-		<fieldset>
-		<legend>Atualizar e Deletar</legend>
-		<h:outputLabel value="Informe o codigo do cliente para outras operações" />
+		<legend>Cadastro de fornecedores</legend>
+		<h:outputLabel style="background-color: red; color: white" value="#{fornecedorBean.mensagem}" />
+		<br /> 
 		<br />
-		<br />
-		<h:outputLabel value="Codigo" />
-		<br />
-		<h:inputText value="#{fornecedorBean.fornecedor.codigo}" required="true" />
+		<h:outputLabel value="Codigo" /> <br />
+		<h:inputText value="#{fornecedorBean.fornecedor.codigo}"/>
 		<br />
 		<h:outputLabel value="Nome" /><br />
 		<h:inputText value="#{fornecedorBean.fornecedor.nome}" />
@@ -56,21 +31,19 @@
 		<h:inputText value="#{fornecedorBean.fornecedor.telefone}"/>
 		<br />
 		<br />
+		<h:commandButton action="#{fornecedorBean.add()}" value="Adicionar Fornecedor" />
+		<br />
 		<h:commandButton action="#{fornecedorBean.filtrar()}"
 			value="Buscar pelo codigo"/>
 		<br />
 		<br />
-		<h:commandButton action="#{fornecedorBean.update()}"
-			value="Atualizar" 
-			rendered="#{fornecedorBean.status}"/>
+		<h:commandButton action="#{fornecedorBean.update()}" value="Atualizar" />
 		<br />
 		<br />
-		<h:commandButton action="#{fornecedorBean.delete()}"
-			value="Remover"
-			rendered="#{fornecedorBean.status}" />
+		<h:commandButton action="#{fornecedorBean.delete()}" value="Remover" />
 		<br />
 		</fieldset>
-	</h:form>
+	
 	<br />
 	
 	
@@ -84,18 +57,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<ui:repeat var="fornecedor" value="#{fornecedorBean.buscarTodos()}">
+			<ui:repeat var="fornecedor" value="#{fornecedorBean.alFornecedores}">
 				<h:panelGroup>
 					<tr>
 						<td>#{fornecedor.codigo}</td>
 						<td>#{fornecedor.nome}</td>
 						<td>#{fornecedor.cnpj}</td>
 						<td>#{fornecedor.telefone}</td>
+						<td>
+							<h:commandButton action="#{fornecedorBean.selecionar(fornecedor)}" value="Selecionar" />
+						</td>
 					</tr>
 				</h:panelGroup>
 			</ui:repeat>
 		</tbody>
 	</table>
+	</h:form>
 
 
 </h:body>

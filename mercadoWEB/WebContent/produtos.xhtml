@@ -1,10 +1,81 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Produtos</title>
+</h:head>
+<h:body>
+	<h:form>			
+		<fieldset>
+		<legend>Cadastro de produtos</legend>
+		<h:outputLabel style="background-color: red; color: white" value="#{produtoBean.mensagem}" />
+		<br /> 
+		<br />
+		<h:outputLabel value="Codigo" /> <br />
+		<h:inputText value="#{produtoBean.produtos.codigo}"/>
+		<br />
+		<h:outputLabel value="Nome" /><br />
+		<h:inputText value="#{produtoBean.produtos.nome}" />
+		<br />
+		<h:outputLabel value="Marca" /><br />
+		<h:inputText value="#{produtoBean.produtos.marca}"/>
+		<br />
+		<h:outputLabel value="Preço" /><br />
+		<h:inputText value="#{produtoBean.produtos.preco}"/>
+		<br />
+		<h:outputLabel value="Codigo Fornecedor" /><br /> 
+		<h:inputText value="#{produtoBean.produtos.codigoFornecedor}"/>
+		<br />
+		<br />
+		<h:commandButton action="#{produtoBean.add()}" value="Adicionar Produtos" />
+		<br />
+		<br />
+		<h:commandButton action="#{produtoBean.filtrar()}" value="Buscar pelo codigo" />
+		<br />
+		<br />
+		<h:commandButton action="#{produtoBean.update()}" value="Atualizar" />
+		<br />
+		<br />
+		<h:commandButton action="#{produtoBean.delete()}" value="Remover" />
+		<br />
+		</fieldset>
+	
+	<br />
+	
+	
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Marca</th>
+				<th>Preco</th>
+				<th>Código Fornecedor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<ui:repeat var="produto" value="#{produtoBean.alProdutos}">
+				<h:panelGroup>
+					<tr>
+						<td>#{produto.codigo}</td>
+						<td>#{produto.nome}</td>
+						<td>#{produto.marca}</td>
+						<td>#{produto.preco}</td>
+						<td>#{produto.codigoFornecedor}</td>
+						<td>
+							<h:commandButton action="#{produtoBean.selecionar(produto)}" value="Selecionar" />
+						</td>
+					</tr>
+				</h:panelGroup>
+			</ui:repeat>
+		</tbody>
+	</table>
+	</h:form>
 
-	<body>
-		<h1>PRODUTOS</h1>
-	</body>
+
+</h:body>
 </html>

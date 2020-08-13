@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import br.com.api.mercado.dao.IClienteDAO;
@@ -15,12 +16,15 @@ public class ClienteBean {
 	@EJB
 	private IClienteDAO clienteDAO;
 	
+	private List<Cliente> alClientes = new ArrayList<Cliente>();
 	private Cliente cliente;
 	private String mensagem;
 	private boolean status = false;
 	
-	public ClienteBean() {
+	@PostConstruct
+	public void ClienteBean() { //constructor
 		cliente = new Cliente();
+		this.alClientes = clienteDAO.buscarTodos(cliente);
 	}
 
 	public Cliente getCliente() {
@@ -46,12 +50,24 @@ public class ClienteBean {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	public List<Cliente> getAlClientes() {
+		return alClientes;
+	}
+
+	public void setAlClientes(List<Cliente> alClientes) {
+		this.alClientes = alClientes;
+	}
 
 //	Operações com o BANCO (DAO)
 	
 	public void add(){
 		this.mensagem = null;
-		cliente.setCodigo(null);  
+		
+		if (cliente.getCodigo() != null) {
+			this.mensagem = "Código preenchido, não é possivel cadastrar!";
+			return;
+		}
 		
 		Cliente clienteRetorno = clienteDAO.add(cliente);
 		
@@ -59,34 +75,55 @@ public class ClienteBean {
 			this.mensagem = "Erro ao cadastrar cliente";
 		} else {
 			this.mensagem = "Cliente cadastrado com sucesso";
+			this.alClientes = clienteDAO.buscarTodos(cliente);
 		}
 	}
 	
-	public List<Cliente> buscarTodos(){
-		List<Cliente> alClientes = new ArrayList<Cliente>();
-		alClientes = clienteDAO.buscarTodos(cliente);
-		return alClientes;
+	public void selecionar(Cliente clienteSel) {
+		this.cliente = clienteSel;
 	}
 	
-	public void filtrar(){
+	public void buscarTodos(){
+		alClientes = clienteDAO.buscarTodos(cliente);
+	}
+	
+	public void filtrar() {
+		
+		if (cliente.getCodigo() == null) {
+			this.mensagem = "Código não preenchido, favor informar para a pesquisa!";
+			return;
+		}
+		
 		cliente = clienteDAO.filtrar(cliente, cliente.getCodigo());
-		setStatus(true);
 		setMensagem("");
 	}
 	
 	public void update(){
+		
+		if (cliente.getCodigo() == null) {
+			this.mensagem = "Código não preenchido, favor informar para a atualizar!";
+			return;
+		}
+		
 		cliente = clienteDAO.update(cliente);
 		setCliente(cliente);
 		setStatus(false);
 		this.cliente = new Cliente();
 		setMensagem("");
+
+		this.alClientes = clienteDAO.buscarTodos(cliente);
 	}
 	
 	public void delete(){
+		
+		if (cliente.getCodigo() == null) {
+			this.mensagem = "Código não preenchido, favor informar para a excluir!";
+			return;
+		}
+		
 		clienteDAO.delete(cliente, cliente.getCodigo());
-		setStatus(false);
 		this.cliente = new Cliente();
-		setMensagem("");
+		setMensagem("Cliente Deletado!");
+		buscarTodos();
 	}
-
 }

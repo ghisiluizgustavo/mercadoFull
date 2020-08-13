@@ -8,13 +8,25 @@
 	<managed-bean>
 		<managed-bean-name>clienteBean</managed-bean-name>
 		<managed-bean-class>br.com.api.mercado.bean.ClienteBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	
 	<managed-bean>
 		<managed-bean-name>fornecedorBean</managed-bean-name>
 		<managed-bean-class>br.com.api.mercado.bean.FornecedorBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>produtoBean</managed-bean-name>
+		<managed-bean-class>br.com.api.mercado.bean.ProdutoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>vendaBean</managed-bean-name>
+		<managed-bean-class>br.com.api.mercado.bean.VendaBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
 </faces-config>
