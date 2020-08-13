@@ -93,7 +93,7 @@ public class FornecedorBean {
 		fornecedor = fornecedorDAO.update(fornecedor);
 		setFornecedor(fornecedor);
 		this.fornecedor = new Fornecedor();
-		setMensagem(null);
+		setMensagem("Fornecedor Atualizado");
 	}
 
 	public void delete() {

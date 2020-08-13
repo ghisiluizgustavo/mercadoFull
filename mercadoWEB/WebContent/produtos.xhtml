@@ -42,12 +42,15 @@
 		<br />
 		<h:commandButton action="#{produtoBean.delete()}" value="Remover" />
 		<br />
+		<br />
+		<h:commandButton action="#{produtoBean.buscarTodos()}" value="Buscar Todos" />
+		<h:commandButton style="margin-left: 30px" action="index" value="Inicio" />
 		</fieldset>
 	
 	<br />
 	
 	
-	<table border="1px">
+	<table style="text-align: center" border="1px">
 		<thead>
 			<tr>
 				<th>Código</th>
@@ -67,7 +70,7 @@
 						<td>#{produto.preco}</td>
 						<td>#{produto.codigoFornecedor}</td>
 						<td>
-							<h:commandButton action="#{produtoBean.selecionar(produto)}" value="Selecionar" />
+							<h:commandButton style="cursor: pointer" action="#{produtoBean.selecionar(produto)}" value="Selecionar" />
 						</td>
 					</tr>
 				</h:panelGroup>

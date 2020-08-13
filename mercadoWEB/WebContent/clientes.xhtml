@@ -42,10 +42,11 @@
 			<br />
 			<br />
 			<h:commandButton action="#{clienteBean.buscarTodos()}" value="Buscar Todos" />
+			<h:commandButton style="margin-left: 30px" action="index" value="Inicio" />
 		</fieldset>
 		<br />
 
-		<table border="1px">
+		<table style="text-align: center" border="1px">
 			<thead>
 				<tr>
 					<th>Código</th>
@@ -61,7 +62,7 @@
 							<td>#{cliente.nome}</td>
 							<td>#{cliente.cpf}</td>
 							<td>
-								<h:commandButton action="#{clienteBean.selecionar(cliente)}" value="Selecionar" />
+								<h:commandButton style="cursor: pointer" action="#{clienteBean.selecionar(cliente)}" value="Selecionar" />
 							</td>
 						</tr>
 					</h:panelGroup>

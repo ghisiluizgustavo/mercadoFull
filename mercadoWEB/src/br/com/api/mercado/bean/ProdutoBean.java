@@ -91,7 +91,7 @@ public class ProdutoBean {
 		produtos = produtoDAO.update(produtos);
 		setProdutos(produtos);
 		this.produtos = new Produtos();
-		setMensagem(null);
+		setMensagem("Produto Atualizado");
 	}
 
 	public void delete() {

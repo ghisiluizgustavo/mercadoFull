@@ -95,7 +95,7 @@ public class ClienteBean {
 		}
 		
 		cliente = clienteDAO.filtrar(cliente, cliente.getCodigo());
-		setMensagem("");
+		setMensagem(null);
 	}
 	
 	public void update(){
@@ -109,8 +109,7 @@ public class ClienteBean {
 		setCliente(cliente);
 		setStatus(false);
 		this.cliente = new Cliente();
-		setMensagem("");
-
+		setMensagem("Cliente Atualizado");
 		this.alClientes = clienteDAO.buscarTodos(cliente);
 	}
 	
