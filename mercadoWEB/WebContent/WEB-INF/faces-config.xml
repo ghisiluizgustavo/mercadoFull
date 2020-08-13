@@ -28,5 +28,6 @@
 		<managed-bean-class>br.com.api.mercado.bean.VendaBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	
 
 </faces-config>
