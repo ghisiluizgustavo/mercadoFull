@@ -59,7 +59,7 @@ public class ClienteBean {
 		this.alClientes = alClientes;
 	}
 
-//	Operações com o BANCO (DAO)
+//	Operações com o BANCO
 	
 	public void add(){
 		this.mensagem = null;
