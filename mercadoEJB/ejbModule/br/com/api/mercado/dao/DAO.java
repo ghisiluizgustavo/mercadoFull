@@ -49,7 +49,8 @@ abstract public class DAO<T> {
         return al;
     }
 
-    public EntityManager getEntityManager() {
+    private EntityManager getEntityManager() {
+
         if (entityManager == null) {
             EntityManagerFactory factory = null;
             try {
@@ -64,4 +65,5 @@ abstract public class DAO<T> {
         }
         return entityManager;
     }
+    
 }

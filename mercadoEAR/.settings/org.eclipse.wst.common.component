@@ -19,5 +19,9 @@
             <dependent-object>Module_1597153421241</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="web.war" deploy-path="/" handle="module:/resource/web/web">
+            <dependent-object>Module_1599587408736</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

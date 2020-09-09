@@ -2,7 +2,6 @@ package br.com.api.mercado.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -22,7 +21,7 @@ public class ClienteBean {
 	private boolean status = false;
 	
 	@PostConstruct
-	public void ClienteBean() { //constructor
+	public void init() { //constructor
 		cliente = new Cliente();
 		this.alClientes = clienteDAO.buscarTodos(cliente);
 	}
@@ -62,6 +61,7 @@ public class ClienteBean {
 //	Operações com o BANCO
 	
 	public void add(){
+		
 		this.mensagem = null;
 		
 		if (cliente.getCodigo() != null) {
