@@ -19,8 +19,10 @@
             <dependent-object>Module_1597153421241</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="web.war" deploy-path="/" handle="module:/resource/web/web">
-            <dependent-object>Module_1599587408736</dependent-object>
+        <dependent-module archiveName="spring-core-3.2.0.RELEASE.jar" deploy-path="/lib" handle="module:/classpath/lib/mercadoEAR/spring-core-3.2.0.RELEASE.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.springframework.web-3.0.2.RELEASE.jar" deploy-path="/lib" handle="module:/classpath/lib/mercadoEAR/org.springframework.web-3.0.2.RELEASE.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

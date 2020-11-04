@@ -5,5 +5,5 @@ import br.com.api.mercado.model.Cliente;
 
 @Stateless
 public class ClienteDAO extends DAO<Cliente> implements IClienteDAO {
-	
+
 }

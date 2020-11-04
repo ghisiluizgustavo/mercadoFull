@@ -8,7 +8,6 @@
 		<project>mercadoJPA</project>
 		<project>mercadoWEB</project>
 		<project>mercadoWS</project>
-		<project>web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

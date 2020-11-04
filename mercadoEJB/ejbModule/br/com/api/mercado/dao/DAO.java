@@ -48,7 +48,7 @@ abstract public class DAO<T> {
 
         return al;
     }
-
+  
     private EntityManager getEntityManager() {
 
         if (entityManager == null) {

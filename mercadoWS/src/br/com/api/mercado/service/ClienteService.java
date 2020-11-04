@@ -32,7 +32,7 @@ public class ClienteService {
     @WebMethod(operationName="addCliente")
     @WebResult(name="ClienteAdicionado")
     public Cliente add(@WebParam(name="cliente") Cliente cliente){
-    	cliente.setCodigo(null);
+//    	cliente.setCodigo(null);
     	return clienteDAO.add(cliente);
     }
     
@@ -52,5 +52,5 @@ public class ClienteService {
     public Cliente filtrar(@WebParam(name="id")Integer id){
     	return clienteDAO.filtrar(new Cliente(), id);
     }
-        
+    
 }
